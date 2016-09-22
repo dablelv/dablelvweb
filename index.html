@@ -3,6 +3,10 @@
 <html>
 	<head>
 		<meta charset="utf-8"/>
+		<!--
+		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+		-->
+		
 		<title>吕吕个人网站</title>
 		<link rel="icon" href="res/img/favicon.ico" type="image/x-icon" />
 		<link rel="shortcut icon" href="res/img/favicon.ico" type="image/x-icon" />
@@ -367,6 +371,7 @@
 					<div class="key">
 						<span id="myTag">MY TAG:</span>
 						<ul id="keyWord">
+							<li>CC++</li>
 							<li>web前端</li>
 							<li>广中医•医工</li>
 							<li>华工•软院</li>
@@ -391,9 +396,16 @@
 							<p title="欢迎加QQ:1589276509交流!">本站正在建设中，会进一步完善。</p>
 						</div>
 					</div>
-		
 					
 					<div id="web0" class="details">
+						<input class="close" type="button">
+						<p>CC++是我研究生阶段接触最多的语言，就此也阅读了不少书籍尝试着全面了解CC++的知识点，但因C++的复杂性，仍需不断的探索学习中。<br/>	
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						此外，学习的过程中也总结了一些技术博文，本着创作与分享的精神，默默的坚持着。
+						</p>
+					</div>
+					
+					<div id="web1" class="details">
 						<input class="close" type="button">
 						<p> 我并没有系统的学习web前端，只是感兴趣想做一个个人网站。这个念头是看了我本科同学个人网站之后萌生的，又在我舍友的影响和刺激下，愈加坚定了。<br/>	
 						&nbsp;&nbsp;&nbsp;&nbsp;
@@ -401,7 +413,7 @@
 						</p>
 					</div>
 					
-					<div id="web1" class="details">
+					<div id="web2" class="details">
 						<input class="close" type="button">
 						<p>
 						人生充满了机缘巧合，高考前后坚持读医的我，最终在码农的路上渐行渐远。对，我就是在广中医的医学信息工程学院读完了四年本科。依昔不曾忘记，医工的前身叫信息技术学院。<br/>	
@@ -410,7 +422,7 @@
 						</p>
 					</div>
 					
-					<div id="web2" class="details">
+					<div id="web3" class="details">
 						<input class="close" type="button">
 						<p>
 						华南理工，软件学院，真的很荣幸能够求学于此，雕琢硕士生涯。读研的萌芽，在大二时已悄悄发芽，最终在华工的沃土长大开花。<br/>	
@@ -418,7 +430,7 @@
 						</p>
 					</div>
 					
-					<div id="web3" class="details">
+					<div id="web4" class="details">
 						<input class="close" type="button">
 						<p>
 						高性能计算，Unix环境编程。熟练掌握C、C++，Linux环境pthread、OpenMP并发编程，基础网络编程、shell，make脚本编写。
@@ -427,7 +439,7 @@
 						</p>
 					</div>
 					
-					<div id="web4" class="details">
+					<div id="web5" class="details">
 						<input class="close" type="button">
 						<p>热爱乒乓球，喜欢吉他，旅游，看电影，听音乐，在忙碌紧张的生活中，给自己创造快乐。有时，却因爱好而感到烦恼，相比他人，自己的爱好总是那么差劲。不过知道差距，就慢慢去缩短它。
 						</p>
@@ -614,8 +626,8 @@
 						</div>
 						<div id="download">
 							<h4>resume download</h4>
-							<a href="doc/吕吕_CN.docx">吕吕-CN</a>
-							<a href="doc/吕吕_EN.docx">吕吕-EN</a>
+							<a href="res/doc/吕吕_CN.docx">吕吕-CN</a>
+							<a href="res/doc/吕吕_EN.docx">吕吕-EN</a>
 						</div>
 					</div>
 				</li>		
@@ -1443,7 +1455,7 @@
         "common":{
             "bdPopTitle":"分享吕吕个人站点",  
             "bdSnsKey":{},  
-            "bdText":"吕吕个人站点:",   
+            "bdText":"吕吕个人站点:lvqingqing.site",   
             "bdMini":"2",  
             "bdMiniList":false,  
             "bdPic":"", /* 此处填写要分享图片地址 */
@@ -1455,7 +1467,8 @@
 	with(document)0[  
         (getElementsByTagName('head')[0]||body).  
         appendChild(createElement('script')).  
-        src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)  
+        src='js/baidushare/baidushare.js'
+        //src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)
 	];
 </script>
 
