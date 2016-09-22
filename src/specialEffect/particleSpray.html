@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>粒子喷射</title>
+		<link href="../../res/img/lv.png" rel="shortcut icon"/>
+	</head>
+	<body style="margin:0 0;"> 
+		<canvas id="lvlvCanvas" width="210" height="210" style="background-color:#000000"></canvas>
+	</body>
+	
+</html>
+
+<script type="text/javascript">
+    var canvas=document.getElementById('lvlvCanvas');
+	canvas.width = window.innerWidth;
+    canvas.height =window.innerHeight; 
+	
+	window.setInterval("drawParticle(5,canvas)",1000/30);
+	
+	//初始化一个粒子数组
+	var particles = [];
+	
+	/*****************************************
+	//func:随机画粒子
+	//param:radius:粒子半径，canvas:画布对象
+	//ret:void
+	******************************************/
+	function drawParticle(radius,canvas){
+		//画矩形清空画布canvas
+		var ctx=canvas.getContext("2d");
+		ctx.fillStyle="#000000";
+		ctx.fillRect(0,0,canvas.width,canvas.height);
+		
+		var x=canvas.width/2;
+		var y=2*canvas.height/3;
+		var particle=new Particle(x,y,radius)
+		particle.xOffset = Math.random()*6-3;//注意这里啦，给粒子一个水平位置变化量(-3,3)
+		particles.push(particle);
+		
+		for(var i=0; i<particles.length; i++){
+			particles[i].render(canvas);
+			
+			particles[i].yOffset+=particles[i].gravity;
+			particles[i].y+=particles[i].yOffset;
+			particles[i].x+=particles[i].xOffset;
+			particles[i].colorHSL+=5;//增加一点
+		}
+	}
+	
+	//粒子类
+	function Particle(x,y,radius){
+		//成员变量
+		this.x=x;
+		this.y=y;
+		this.radius=radius;
+		
+		//水平，垂直偏移量
+		this.xOffset=0;
+		this.yOffset=-10;
+		this.gravity=0.2;  	  //重力
+		this.colorHSL=0;      //颜色
+		
+		//成员函数
+		this.render=function(canvas){
+			var ctx=canvas.getContext("2d");
+			//var rgbColor="rgb("+this.colorRGB+","+(255-this.colorRGB)+","+(this.colorRGB/2)+")";
+			
+			ctx.fillStyle="hsla("+this.colorHSL+",100%,50%,1)";
+			//ctx.fillStyle="rgba(100%,0%,0%,1)";
+			ctx.beginPath();
+			ctx.arc(this.x,this.y,this.radius,0,Math.PI*2,true);
+			ctx.closePath();
+			ctx.fill();
+		}
+	}
+		
+</script>
