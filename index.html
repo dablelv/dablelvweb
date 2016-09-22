@@ -3,9 +3,8 @@
 <html>
 	<head>
 		<meta charset="utf-8"/>
-		<!--
 		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-		-->
+
 		
 		<title>吕吕个人网站</title>
 		<link rel="icon" href="res/img/favicon.ico" type="image/x-icon" />
@@ -290,12 +289,14 @@
 		<style type="text/css">
 			/*---------------------footer style------------------*/
 			#footer{position:relative;width:100%;font-family:'微软雅黑';background-color:rgb(55,55,55);padding:20px 0;}
-			#footer p{font-size:13px;color:#aaa;padding:3px 0;text-align:center;}
+			#footer p{font-size:12px;color:#aaa;padding:3px 0;text-align:center;}
 			#footer p.friendlyLink a{font-size:13px;color:#aaa;}
 			#footer p.friendlyLink a:hover{color:red;}
-			#footer p.contact a{font-size:14px;color:#aaa;}
+			#footer p.contact a{font-size:12px;color:#aaa;}
 			#footer p.contact a:hover{color:red;}
-			#footer p.bdsharebuttonbox a{float:none;}
+			#footer p.share span,#footer p.share i{font-size:12px;color:#aaa;}
+			#footer p.share span:hover,#footer p.share i:hover{color:red;}
+
 		</style>
 		
 		<script src="js/jquery/jquery-1.9.1.min.js"></script>
@@ -391,7 +392,7 @@
 							本站基于前端技术进行建站，使用到HTML,CSS，纯原生JavaScript，HTML5，CSS3技术，lufylegend开源游戏引擎，jquery在插件展示中使用。
 							</p>
 							<p>
-							由于部分地方使用到HTML5和CSS3技术，使用对HTML5和CSS3友好的浏览器会有更完美的体验！如：Google Chrome；Fire Fox；Opera；Safari等，尽量别用万恶的IE。当然360安全浏览器也是不错的选择，本人因为抢票，就一直用着它。而且，它的开发者工具也很强大！！！。
+							由于部分地方使用到HTML5和CSS3技术，使用对HTML5和CSS3友好的浏览器会有更完美的体验！如：Google Chrome；Fire Fox；Opera；Safari等，尽量别用万恶的IE。当然360安全浏览器和QQ浏览器也是不错的选择，默认使用Chrome内核，开发者工具也很强大！！！。
 							</p>
 							<p title="欢迎加QQ:1589276509交流!">本站正在建设中，会进一步完善。</p>
 						</div>
@@ -867,13 +868,13 @@
 				<a target="_blank" href="https://github.com/dablelv"  alt="github dableLv" title="github dableLv"><i class="fa fa-github"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
 				<a target="_blank" href="http://blog.csdn.net/k346k346"  alt="CSDN博客" title="CSDN博客">csdn blog</a>
 			</p>
-			<p class="bdsharebuttonbox">
-				<a href="#" class="bds_more" data-cmd="more"></a>
-				<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-				<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-				<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
-				<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
-				<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+			<p class="share">
+				分享：
+				<span id="sqzone" title="分享到QQ空间" style="cursor:pointer">Qzone</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<i id="sweibo" class="fa fa-weibo" title="分享到新浪微博"></i>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<i id="stencentWeibo" class="fa fa-tencent-weibo" title="分享到腾讯微博"></i>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<i id="srenren" class="fa fa-renren" title="分享到人人网"></i>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span id="sdouban" class="" title="分享到豆瓣网" style="cursor:pointer">douban</span>
 			</p>
 			<p class="copyRight">Copyright © 2016 Dablelv 吕吕 All Rights Reserved</p>
 		</div>
@@ -1451,25 +1452,44 @@
 	};
 	
 	//9.2分享
-	window._bd_share_config={  
-        "common":{
-            "bdPopTitle":"分享吕吕个人站点",  
-            "bdSnsKey":{},  
-            "bdText":"吕吕个人站点:lvqingqing.site",   
-            "bdMini":"2",  
-            "bdMiniList":false,  
-            "bdPic":"", /* 此处填写要分享图片地址 */
-            "bdStyle":"0",  
-            "bdSize":"14"  
-            },  
-        "share":{}  
-	};  
-	with(document)0[  
-        (getElementsByTagName('head')[0]||body).  
-        appendChild(createElement('script')).  
-        src='js/baidushare/baidushare.js'
-        //src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)
-	];
+	var sqzone=document.getElementById("sqzone");
+	sqzone.onclick=function(){
+		var title="吕吕个人网站：lvqingqing.site";
+		var url="lvqingqing.site";
+		var pic="res/img/me/cartoonDablelv.jpg";
+		window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?site=www.tuan2.com&title=' + '' + '&desc=' + title + '&summary=' + '' + '&url=' + url+'&pics=' + pic,'_blank');
+	};
+	
+	var sweibo=document.getElementById("sweibo");
+	sweibo.onclick=function(){
+		var title="吕吕个人网站：lvqingqing.site";
+		var url="lvqingqing.site";
+		var pic="res/img/me/cartoonDablelv.jpg";
+		window.open('http://v.t.sina.com.cn/share/share.php?title=' + title + '&url=' + url + '&pic=' + pic,'_blank');
+	};
+	
+	var stencentWeibo=document.getElementById("stencentWeibo");
+	stencentWeibo.onclick=function(){
+		var title="吕吕个人网站：lvqingqing.site";
+		var url="lvqingqing.site";
+		var pic="res/img/me/cartoonDablelv.jpg";
+		window.open('http://v.t.qq.com/share/share.php?title=' + title + '&url=' + url + '&pic=' + pic, '_blank');
+	};
+	
+	var srenren=document.getElementById("srenren");
+	srenren.onclick=function(){
+		var title="吕吕个人网站：lvqingqing.site";
+		var url="lvqingqing.site";
+		var pic="res/img/me/cartoonDablelv.jpg";
+		window.open('http://widget.renren.com/dialog/share?resourceUrl=' + url + '&title=' + title + '&description=' + '' + '&pic=' + pic + '&charset=utf-8', '_blank');
+	};
+	
+	var sdouban=document.getElementById("sdouban");
+	sdouban.onclick=function(){
+		var title="吕吕个人网站：lvqingqing.site";
+		var url="lvqingqing.site";
+		window.open('http://www.douban.com/recommend/?title=' + title + '&url=' + url, '_blank');
+	};
 </script>
 
 <!-- 10.键盘切换各个页面 -->
