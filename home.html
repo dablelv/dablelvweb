@@ -1,0 +1,1542 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
+		
+		<title>吕吕个人网站</title>
+		<link rel="icon" href="res/img/favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="res/img/favicon.ico" type="image/x-icon" />
+	
+		<style type="text/css">
+			*{margin:0px;padding:0px;}
+			
+			/*-----------------hidden banner style------------*/
+			#hiddenBanner{width:100%;height:480px;text-align:center;overflow:hidden;}
+			
+			/*------------------slide banner------------------*/
+			#boxBanner{overflow:hidden;}
+			
+			/*--------------------header----------------------*/
+			#header{position:relative;width:900px;height:60px;background-color:rgba(0,0,0,0.6);margin:0 auto;margin-top:-60px;text-align:center;}
+			#center{display:inline-block;height:100%;}
+			#logo{float:left;height:100%;}
+			#logo img{margin-top:20px;width:124px;height:30px;}
+			#navContainer{float:left;position:relative;height:100%;}
+			#nav{margin-top:25px;}
+			#nav li{float:left;list-style:none;text-align:center;padding:0 18px;cursor:pointer;}
+			#nav li a{color:#FABF0A;text-decoration:none;font:600 15px/100% "微软雅黑",sans-serif;}
+			#nav li:hover a{color:red;}
+			#nav #firstLi a{color:red;}
+			.clear{clear:both;}
+			#underline{clear:both;height:5px;position:absolute;bottom:0;left: 18px;width: 38px;height: 5px;background: #E8E8E8;}
+		</style>
+	
+		<!--============================== life feeling page ==============================-->
+		<link rel="stylesheet" type="text/css" href="css/turnPage/default.css"/>
+		<link rel="stylesheet" type="text/css" href="css/turnPage/bookblock.css"/>
+		
+		<style type="text/css">
+			/*------------------------------------------main body--------------------------------------*/
+			#mainList li{list-style:none;}
+			.main{width:900px;margin:0 auto; position:relative;background-color:#E8E8E8;overflow:hidden;}
+			.main-ul{position:relative;left:0;top:0;width:5400px;}
+			.main-ul li{width:900px;float:left;position:relative;}
+			
+			/*==============================first page================================*/
+
+			/*----------------------Carousel----------------------*/
+			.Carousel{width:800px;margin:0 auto;border-bottom:2px solid rgb(209,206,203);padding-bottom:20px;}
+			.Carousel ul{height:250px; width:800px; position:relative;}
+			.Carousel li{list-style:none;}
+			.Carousel ul .img1{ position:absolute;width:180px; height:130px; top:75px; left:300px; z-index:10}
+			.Carousel ul .img2{ position:absolute;width:150px; height:100px; top:60px; left:130px;z-index:9}
+			.Carousel ul .img3{ position:absolute;width:130px; height:80px; top:40px; left:223px;z-index:8}
+			.Carousel ul .img4{ position:absolute;width:130px; height:80px; top:40px; left:414px;z-index:8}
+			.Carousel ul .img5{ position:absolute;width:150px; height:100px; top:60px; left:498px;z-index:9}
+			.img1 img{width:180px; height:130px;}
+			.img2 img,.img5 img{ width:150px; height:100px;}
+			.img3 img,.img4 img{ width:130px; height:80px;}
+			.Carousel ul li{position:absolute;-webkit-box-reflect:below 2px -webkit-gradient(linear,left top,left bottom,from(transparent),color-stop(0.6,transparent),to(white));}
+			
+			/*----------------------key word----------------------*/
+			.key{width:800px; height:40px;margin:10px auto;text-align:center;}
+			.key #myTag{float:left; margin-left:130px;padding:5px 10px;font:bold 15px/100% "Open Sans",sans-serif; color:#6A6A6A;display:inline-block;}
+			.key #myTag:hover{background:#FFF;color:#000;border-radius:25px;}
+			#keyWord{float:left;display:inline-block; margin:0px,auto;}
+			#keyWord li{float:left;width:auto;text-align:center; padding:5px 10px;cursor:pointer;font:bold 15px/100% "Open Sans",sans-serif; color:#6A6A6A;}
+			#keyWord li:hover{background:#FFF; color:#000; border-radius:25px;}
+			
+			/*----------------------info div----------------------*/
+			.info{position:relative;width:850px; margin:0 auto;}
+			.info .photo{float:left;position:relative;overflow:hidden;width:210px; height:250px; margin-left:40px;}
+			.photo img{width:200px;height:250px;border:4px solid #FFF;border-radius:10px; }
+			#photo-details{position:absolute;bottom:258px;left:4px;width:192px;text-align:center;font:300 12px/150% "微软雅黑",sans-serif; color:white; padding:10px 0;background:#000;opacity:0.8; filter:alpha(opacity=80);}
+			.info .website{float:right; width:550px; }
+			.website h4{font-family:'微软雅黑'; font-size:15px;color:#6A6A6A;}
+			.website p{text-indent:2em; line-height:200%; margin:10px 0px;font-family:"Open Sans",sans-serif;font-size:15px; color:#6A6A6A;}
+			
+			/*---------------------web page div------------------*/
+			.cover{position:absolute;opacity:0.8;filter:alpha(opacity=80);background:#000;z-index:1;top:0;left:0;}		/*遮罩层*/
+			.details{z-index:9999;position:fixed;display:none;width:0px;height:0px; background:#fff; color:#000; border:3px solid #DBDBDB; border-radius:10px;}
+			.details .close{position:absolute;top:-8px;right:-8px;width:24px;height:24px;background:url(res/img/close24.ico) no-repeat;border:0;}
+			.details p{text-indent:2em;font-family:"微软雅黑";line-height:200%;padding:10px 5px;}
+			
+			/*============================== resume page ==============================*/
+			#resume{width:850px;margin:0 auto;}
+			#resume h2{text-align:center;color:#2070B9;font-family:"Open Sans",sans-serif;padding-top:30px;}
+			#resume table{font-family:"微软雅黑";color:#000;font-size:15px;line-height:150%;}
+			#resume h4{border-bottom:2px solid rgb(209,206,203);color:#3190E5;line-height:150%;font-family:"微软雅黑";padding-top:10px;}
+			#resume .point{position:relative;font-size:200%;top:5px;}
+			
+			/*****个人信息******/
+			#personal a{ text-decoration:underline;color:#6A6A6A;}
+			#personal .td-title{padding-right:120px;}
+			#personal #dableJpg{width:95px;height:130px;float:right;}
+			
+			/*****教育经历******/
+			#education td{padding-right:50px;}
+			
+			/*****项目经验******/
+			#experience .italic{font-style:italic;}
+			#experience .bold{font-weight:bold;font-family:"黑体";}
+			#achievement td{padding-right:30px;}
+			#activity td{padding-right:30px;}
+			#honor .firstCol{width:152px;vertical-align:top;}
+			
+			/*****下载链接*****/
+			#download{text-align:center;}
+			#download h4{text-align:left;}
+			#download a{display:inline-block;padding:0px 100px;padding-top:15px;color:#aaa;text-shadow:0px 1px 0 #fff;font-weight:bold; font-family:"微软雅黑";
+					    text-decoration:none;}
+			#download a:hover{text-decoration:underline;color:#555;}
+			
+			/*============================== album page ==============================*/
+			/*****album container******/
+			#albumContainer{background-color:rgba(0,0,0,0.1);border-radius:10px;width:750px;margin:30px auto;padding-top:10px;}
+			#albumContainer img{display:block;width:25%;margin:0px auto;margin-bottom:10px;}
+			#albumList{position:relative;width:750px;height:470px;border-top:2px solid #eee;}
+			#albumList li{float:left;width:300px;height:190px;margin-left:50px;margin-top:25px;background-color:white;-webkit-box-shadow:0px 0px 20px #666;box-shadow:0px 0px 20px #666;border:5px solid white; border-radius:5px;}
+			#albumList li img{display:block;width:100%;height:90%;margin:0 auto;}
+			#albumList li span{display:block;background-color:white;font:small-caps 15px/100% "微软雅黑",sans-serif;text-align:center;}
+			
+			/******lzl*****/
+			#stage{width:900px;-webkit-perspective:1200px;position:absolute;perspective:1500px;z-index:-1;}
+			#photo1container{position:relative;transform-style:preserve-3d;-webkit-transform-style: preserve-3d;
+				width:150px;height:320px; position:absolute;left:42%;-webkit-transition:-webkit-transform 1s;transition:transform 1s;}
+			#photo1container li{float:none;width:150px;position:absolute;bottom:0;border:5px solid white; border-radius:5px;-webkit-box-reflect:below 5px -webkit-gradient(linear,left top,left bottom,from(transparent),color-stop(0.7,transparent),to(white));}
+			#photo1container li img{width:100%;}
+			#photo1container li span{position:absolute;bottom:0px;display:block;width:100%;background-color:white;text-align:center;color:#333;font-size:8px;}
+			
+			#photo1container li:nth-child(1){transform: rotateY(0deg) translateZ(300px); -webkit-transform: rotateY(0deg) translateZ(300px);}  
+			#photo1container li:nth-child(2){transform:rotateY(40deg) translateZ(300px);-webkit-transform: rotateY(40deg) translateZ(300px);}  
+			#photo1container li:nth-child(3){transform: rotateY(80deg) translateZ(300px);-webkit-transform: rotateY(80deg) translateZ(300px);}  
+			#photo1container li:nth-child(4){transform: rotateY(120deg) translateZ(300px);-webkit-transform: rotateY(120deg) translateZ(300px);}  
+			#photo1container li:nth-child(5){transform: rotateY(160deg) translateZ(300px);-webkit-transform: rotateY(160deg) translateZ(300px);}  
+			#photo1container li:nth-child(6){transform: rotateY(200deg) translateZ(300px);-webkit-transform: rotateY(200deg) translateZ(300px);}  
+			#photo1container li:nth-child(7){transform: rotateY(240deg) translateZ(300px);-webkit-transform: rotateY(240deg) translateZ(300px);}  
+			#photo1container li:nth-child(8){transform: rotateY(280deg) translateZ(300px);-webkit-transform: rotateY(280deg) translateZ(300px);}  
+			#photo1container li:nth-child(9){transform: rotateY(320deg) translateZ(300px);-webkit-transform: rotateY(320deg) translateZ(300px);}
+			
+			/*============================== JS特效 page ==============================*/
+			@font-face{
+				font-family:'WebSymbolsRegular';
+				src: url('res/iconfont/websymbols/websymbols-regular-webfont.eot');
+				src: url('res/iconfont/websymbols/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'),
+					url('res/iconfont/websymbols/websymbols-regular-webfont.woff') format('woff'),
+					url('res/iconfont/websymbols/websymbols-regular-webfont.ttf') format('truetype'),
+					url('res/iconfont/websymbols/websymbols-regular-webfont.svg#WebSymbolsRegular') format('svg');
+				font-weight: normal;
+				font-style: normal;
+			}
+			.ca-menu{
+				padding: 0;
+				margin: 20px auto;
+				width: 500px;
+			}
+			.ca-menu li{
+				width: 500px;
+				height: 100px;
+				overflow: hidden;
+				display: block;
+				background: #fff;
+				-webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+				-moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+				box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+				margin-bottom: 4px;
+				border-left: 10px solid #000;
+				-webkit-transition: all 300ms ease-in-out;
+				-moz-transition: all 300ms ease-in-out;
+				-o-transition: all 300ms ease-in-out;
+				-ms-transition: all 300ms ease-in-out;
+				transition: all 300ms ease-in-out;
+			}
+			.ca-menu li:last-child{
+				margin-bottom: 0px;
+			}
+			.ca-menu li a{
+				text-align: left;
+				display: block;
+				width: 100%;
+				height: 100%;
+				color: #333;
+				position:relative;
+			}
+			.ca-icon{
+				font-family:WebSymbolsRegular;
+				font-size: 20px;
+				text-shadow: 0px 0px 1px #333;
+				line-height: 90px;
+				position: absolute;
+				width: 90px;
+				left: 20px;
+				text-align: center;
+				-webkit-transition: all 300ms linear;
+				-moz-transition: all 300ms linear;
+				-o-transition: all 300ms linear;
+				-ms-transition: all 300ms linear;
+				transition: all 300ms linear;
+			}
+			.ca-content{
+				position: absolute;
+				left: 120px;
+				width: 370px;
+				height: 60px;
+				top: 20px;
+			}
+			.ca-main{
+				font-size: 30px;
+				-webkit-transition: all 300ms linear;
+				-moz-transition: all 300ms linear;
+				-o-transition: all 300ms linear;
+				-ms-transition: all 300ms linear;
+				transition: all 300ms linear;
+			}
+			.ca-sub{
+				font-size: 14px;
+				color: #666;
+				-webkit-transition: all 300ms linear;
+				-moz-transition: all 300ms linear;
+				-o-transition: all 300ms linear;
+				-ms-transition: all 300ms linear;
+				transition: all 300ms linear; 
+			}
+			.ca-menu li:hover{
+				border-color: #fff004;
+				background: #000;
+			}
+			.ca-menu li:hover .ca-icon{
+				color: #fff004;
+				text-shadow: 0px 0px 1px #fff004;
+				font-size: 50px;
+			}
+			.ca-menu li:hover .ca-main{
+				color: #fff004;
+				font-size: 14px;
+			}
+			.ca-menu li:hover .ca-sub{
+				color: #fff;
+				font-size: 30px;
+			}
+			
+			/*============================== life word page ==============================*/
+			@font-face {
+				font-family:'arrows';
+				src:url('res/iconfont/arrows/arrows.eot');
+				src:url('res/iconfont/arrows/arrows.eot?#iefix') format('embedded-opentype'),
+				url('res/iconfont/arrows/arrows.woff') format('woff'),
+				url('res/iconfont/arrows/arrows.ttf') format('truetype'),
+				url('res/iconfont/arrows/arrows.svg#arrows') format('svg');
+				font-weight:normal;
+				font-style:normal;
+			}
+			.bb-custom-wrapper{width:100%;height:600px;position:relative;}
+			.bb-bookblock{position:relative;width:100%;height:100%;background-color:white;margin:0 auto;z-index:100;-webkit-perspective: 1300px;perspective:2000px;-webkit-backface-visibility:hidden;backface-visibility:hidden;}
+			.bb-item{position:relative;width:100%;height:100%;}
+			.bb-item div{background-color:#E8E8E8;}
+			.bb-custom-firstpage{float:left;width:50%;height:100%;text-align:center;}
+			.bb-custom-firstpage h1{margin-top:30%;font-size:2.625em;line-height: 1.3;font-weight:300;background:#fff;}
+			.bb-custom-firstpage h1 span{display:block;font-size:60%;opacity:0.3;padding:0 0 0.6em 0.1em;}
+			.bb-custom-side{float:left;width:50%;height:100%;overflow:hidden;background-color:#fff;
+				/* Centering with flexbox */
+				display: -webkit-box;
+				display: -moz-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-align-items: center;
+				align-items: center;
+			}
+			.bb-custom-side p{padding:8%;font-size:1.2em;font-weight:300;}
+			.poem p{text-align:center;}
+			.bb-custom-wrapper > nav{position:fixed;width:900px;height:40px;bottom:20px;z-index:1000;text-align:center;}
+			.bb-custom-wrapper > nav a{display:inline-block;width:40px;height:40px;text-align:center;border-radius:2px;background: #1baede;color:#fff;font-size:0;}
+			.bb-custom-wrapper > nav a:hover{opacity:0.6;}
+			.bb-custom-icon:before{font-family:'arrows';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform: none;font-size:40px;display:block;-webkit-font-smoothing:antialiased;}
+			.bb-custom-icon-first:before,.bb-custom-icon-last:before{content:"\e002";}
+			.bb-custom-icon-arrow-left:before,.bb-custom-icon-arrow-right:before {content:"\e003";}
+			.bb-custom-icon-arrow-left:before,.bb-custom-icon-first:before{-webkit-transform:rotate(180deg);transform:rotate(180deg);}
+			
+		</style>
+		
+		<!--============================== game page ==============================-->
+		<link rel="stylesheet" type="text/css" href="css/styleGame.css"/>
+		
+
+		<!--============================== footer ==============================-->
+		<link rel="stylesheet" href="res/iconfont/font-awesome-4.6.3/css/font-awesome.min.css">
+		<style type="text/css">
+			/*---------------------footer style------------------*/
+			#footer{position:relative;width:100%;font-family:'微软雅黑';background-color:rgb(55,55,55);padding:20px 0;}
+			#footer p{font-size:12px;color:#aaa;padding:3px 0;text-align:center;}
+			#footer p.friendlyLink a{font-size:13px;color:#aaa;}
+			#footer p.friendlyLink a:hover{color:red;}
+			#footer p.contact a{font-size:12px;color:#aaa;}
+			#footer p.contact a:hover{color:red;}
+			#footer p.share span,#footer p.share i{font-size:12px;color:#aaa;}
+			#footer p.share span:hover,#footer p.share i:hover{color:red;}
+
+		</style>
+		
+		<script src="js/jquery/jquery-1.9.1.min.js"></script>
+		<script src="js/banner/banner.js"></script>
+		<script type="text/javascript">
+			function getScrollbarWidth() {
+				var oP=document.createElement('p'),styles={width: '100px',height: '100px',overflowY: 'scroll'},i,scrollbarWidth;
+				for (i in styles) 
+					oP.style[i]=styles[i];
+				document.body.appendChild(oP);
+				scrollbarWidth = oP.offsetWidth - oP.clientWidth;
+				oP.remove();
+				return scrollbarWidth;
+			}
+		    //var windowWidth=document.body.clientWidth;
+			//alert(document.body.clientWidth);
+			//var windowWidth=document.body.clientWidth;//window.innerWidth;//document.body.scrollWidth;//window.screen.width;//document.documentElement.offsetWidth;
+			//document.documentElement.scrollWidth;
+			//var windowWidth=document.documentElement.clientWidth-getScrollbarWidth();
+			$(function(){
+				var windowWidth=document.documentElement.clientWidth;//-getScrollbarWidth();
+				$('#boxBanner').banner(windowWidth,280,{
+					'res/img/banner/banner0.png':'#',
+					'res/img/banner/banner1.png':'#',
+					'res/img/banner/banner2.png':'#',
+					'res/img/banner/banner3.png':'#'
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="hiddenBanner">
+			<img src="res/img/graduation0.jpg"></img>
+		</div>
+		<div id="boxBanner"></div>
+		<div id="header">
+			<div id="center">
+				<a id="logo">
+					<img src="res/img/logo/dablelv1.png" title="english name,call me Dablelv" alt="logo"/>
+				</a>
+				<div id="navContainer" title="可使用键盘的左右键进行页面切换，try it!">
+					<ul id="nav">
+						<li id="firstLi"><a href="">主页</a></li>
+						<li><a href="">个人简历</a></li>
+						<li><a href="">相册</a></li>
+						<li><a href="">JS特效</a></li>
+						<li><a href="">小游戏</a></li>
+						<li><a href="">生活感悟</a></li>
+					</ul>
+					<div id=underline></div>
+				</div>  
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		<!---------------------- main page ------------------------>
+		<div class="main" id="main">
+			 <ul id="mainList" class="main-ul">
+				
+				<!------------------- first page start --------------------- --->
+			    <li id="iLi0">
+					<!---------------- Carousel start -------------->
+					<div class="Carousel">
+						<ul id="Carousel">
+							<li class="img1"><img alt="轮播图片1" src="res/img/carousel/img1.jpg"/></li>
+							<li class="img2"><img alt="轮播图片2" src="res/img/carousel/img2.jpg"/></li>
+							<li class="img3"><img alt="轮播图片3" src="res/img/carousel/img3.jpg"/></li>
+							<li class="img4"><img alt="轮播图片4" src="res/img/carousel/img4.jpg"/></li>
+							<li class="img5"><img alt="轮播图片5" src="res/img/carousel/img5.jpg"/></li>
+						</ul>
+					</div> 
+					<!---------------   Carousel end  ----------------->
+					<div class="key">
+						<span id="myTag">MY TAG:</span>
+						<ul id="keyWord">
+							<li>CC++</li>
+							<li>web前端</li>
+							<li>广中医•医工</li>
+							<li>华工•软院</li>
+							<li>主攻方向</li>
+							<li>运动爱好</li>
+						</ul>
+					</div>
+					
+					<div class="info">
+						<div class="photo">
+							<img src="res/img/me/cartoonDablelv.jpg" id="photo" alt="个人头像">
+							<span id="photo-details">吕吕 Dablelv<br/>自制的卡通头像，还可以吧！</span>
+						</div>
+						<div class="website">
+						<h4>本站说明</h4>
+							<p>
+							本站基于前端技术进行建站，使用到HTML,CSS，纯原生JavaScript，HTML5，CSS3技术，lufylegend开源游戏引擎，jquery在插件展示中使用。
+							</p>
+							<p>
+							由于部分地方使用到HTML5和CSS3技术，使用对HTML5和CSS3友好的浏览器会有更完美的体验！如：Google Chrome；Fire Fox；Opera；Safari等，尽量别用万恶的IE。当然360安全浏览器和QQ浏览器也是不错的选择，默认使用Chrome内核，开发者工具也很强大！！！。
+							</p>
+							<p title="欢迎加QQ:1589276509交流!">本站正在建设中，会进一步完善。</p>
+						</div>
+					</div>
+					
+					<div id="web0" class="details">
+						<input class="close" type="button">
+						<p>CC++是我研究生阶段接触最多的语言，就此也阅读了不少书籍尝试着全面了解CC++的知识点，但因C++的复杂性，仍需不断的探索学习中。<br/>	
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						此外，学习的过程中也总结了一些技术博文，本着创作与分享的精神，默默的坚持着。
+						</p>
+					</div>
+					
+					<div id="web1" class="details">
+						<input class="close" type="button">
+						<p> 我并没有系统的学习web前端，只是感兴趣想做一个个人网站。这个念头是看了我本科同学个人网站之后萌生的，又在我舍友的影响和刺激下，愈加坚定了。<br/>	
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						WEB前端其实很有趣，比起Linux环境CC++后台开发有趣多了。几行代码，就能见到自己想要界面和效果，给人以源源不断的动力。
+						</p>
+					</div>
+					
+					<div id="web2" class="details">
+						<input class="close" type="button">
+						<p>
+						人生充满了机缘巧合，高考前后坚持读医的我，最终在码农的路上渐行渐远。对，我就是在广中医的医学信息工程学院读完了四年本科。依昔不曾忘记，医工的前身叫信息技术学院。<br/>	
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						感谢大学母校，感谢医工，感谢曹东博士，何老师以及陪我走过四年的可敬的老师们，可爱的同学们。简而不凡的岁月随风而去，背起行囊，我们各自走在向阳的路上。
+						</p>
+					</div>
+					
+					<div id="web3" class="details">
+						<input class="close" type="button">
+						<p>
+						华南理工，软件学院，真的很荣幸能够求学于此，雕琢硕士生涯。读研的萌芽，在大二时已悄悄发芽，最终在华工的沃土长大开花。<br/>	
+						&nbsp;&nbsp;&nbsp;&nbsp;感谢导师陈老师的关心和培养，以及一路相伴的小伙伴。在这里已将近两年，时光总是转瞬即逝，本科毕业的场景，仿佛发生在昨日，硕士毕业却悄然临近。岁月在流淌，认识新的人，发生着新的事。时间不止步，带来了很多，也带走了很多。这两年，发生了很多事，欲语，却不知从何说起。很累，很累...
+						</p>
+					</div>
+					
+					<div id="web4" class="details">
+						<input class="close" type="button">
+						<p>
+						高性能计算，Unix环境编程。熟练掌握C、C++，Linux环境pthread、OpenMP并发编程，基础网络编程、shell，make脚本编写。
+						<br/>	
+						&nbsp;&nbsp;&nbsp;&nbsp;了解常用算法与数据结构，C#，SQL Server，MIC、CUDA编程，具有大规模集群系统开发经验。
+						</p>
+					</div>
+					
+					<div id="web5" class="details">
+						<input class="close" type="button">
+						<p>热爱乒乓球，喜欢吉他，旅游，看电影，听音乐，在忙碌紧张的生活中，给自己创造快乐。有时，却因爱好而感到烦恼，相比他人，自己的爱好总是那么差劲。不过知道差距，就慢慢去缩短它。
+						</p>
+					</div>
+				</li>
+				<!------------------- first page end --------------------------->
+				
+				<!---------------------- resume start------------------------->
+				<li id="iLi1">
+					<div id="resume">
+						<h2>CC++开发应聘简历</h2>
+						<div id="personal">					
+							<h4>个人信息</h4>
+							<img id="dableJpg" src="res/img/dable.jpg" alt="吕吕求职照" ></img>		
+							<table cellpadding="0" cellspacing="0">
+								<tbody>
+									<tr>
+										<td >姓&emsp;&emsp;名：</td>
+										<td class="td-title">吕吕</td>
+										<td >性&emsp;&emsp;别：</td>
+										<td class="td-title">男</td>
+									</tr>
+									<tr>
+										<td>出生年月：</td>
+										<td class="td-title">1992.04</td>
+										<td >籍&emsp;&emsp;贯：</td>
+										<td class="td-title">安徽寿县</td>
+									</tr>
+									<tr>
+										<td >学&emsp;&emsp;历：</td>
+										<td class="td-title">硕士</td>
+										<td >专&emsp;&emsp;业：</td>
+										<td class="td-title">软件工程</td>
+									</tr>
+									<tr>
+										<td >院&emsp;&emsp;校：</td>
+										<td class="td-title">华南理工大学</td>
+										<td>研究方向：</td>
+										<td class="td-title">高性能计算，Unix环境编程</td>
+									</tr>
+									<tr>
+										<td>政治面貌：</td>
+										<td class="td-title">中共党员</td>
+										<td >电&emsp;&emsp;话：</td>
+										<td class="td-title">15813354925</td>
+									</tr>
+									<tr>
+										<td >邮&emsp;&emsp;箱：</td>
+										<td class="td-title">1589276509@qq.com</td>
+										<td >博&emsp;&emsp;客：</td>
+										<td class="td-title"><a target="_blank" href="http://blog.csdn.net/k346k346">Dablelv的博客专栏</a></td>
+									</tr>
+								</tbody>
+							</table>
+												
+						</div>		
+						<div id="education">
+							<h4>教育经历</h4>
+							<table cellpadding="0" cellspacing="0">
+								<tr>
+									<td>2010.09-2014.06</td>
+									<td>广州中医药大学</td>
+									<td>计算机科学与技术</td>
+									<td>本科</td>
+									<td>排名 6/154</td>
+								</tr>
+								<tr>
+									<td>2014.09-2017.06</td>
+									<td>华南理工大学</td>
+									<td>软件工程</td>
+									<td>工程硕士</td>
+									<td>排名 10/52</td>
+								</tr>
+							</table>
+						</div>
+						<div id="skills">
+							<h4>求职技能</h4>
+							<table cellpadding="0" cellspacing="0">
+								<tr>
+									<td><span class="point">•</span> 熟练掌握C/C++，Linux环境pthread、OpenMP并发编程，基础网络编程、shell、make脚本编写</td>
+								</tr>
+								<tr>
+									<td><span class="point">•</span> 了解常用算法与数据结构，C#，SQL Server，MIC、CUDA、HTML、CSS、JavaScript，具有大规模集群系统开发经验</td>
+								</tr>
+								<tr>
+									<td><span class="point">•</span> CET-6，基本的英语听说读写</td>
+								</tr>
+								<tr>
+									<td><span class="point">•</span> 中级网络工程师资格证书，熟悉基础网络知识</td>
+								</tr>
+							</table>
+						</div>
+						<div id="experience">
+							<h4>项目经验</h4>
+							<table cellpadding="0" cellspacing="0">
+								<tr class="projectInfo">
+									<td><span class="point">•</span> 2015.09-2016.01</td>
+									<td><span class="italic">基于DCR多功能口令破解平台</span></td>
+									<td>负责人与研发</td>
+									<td>天河二号运行</td>
+								</tr>
+								<tr>
+									<td colspan="4"><span class="bold">项目简介：</span>基于DCR并行编程框架，构造Linux下基于MIC异构的集群多功能口令破解平台，支持暴力、字典和明文库破解，支持常见加密算法的植入，并在天河二号近200节点稳定运行。</td>
+								</tr>
+								<tr>
+									<td colspan="4"><span class="bold">职能描述：</span>负责统一口令的处理流程，笛卡尔乘积，数据结构和函数接口的设计与实现，系统集成与调试。</td>
+								</tr>
+								
+								<tr class="projectInfo">
+									<td><span class="point">•</span> 2014.09-2015.07</td>
+									<td><span class="italic">基于明文库的并行集群口令破解系统</span></td>
+									<td>研发</td>
+									<td>天河二号A运行</td>
+								</tr>
+								<tr>
+									<td colspan="4"><span class="bold">项目简介：</span>基于异构集群调度系统，构造大规模集群并行运行的口令破解系统，完成常见算法的口令破解。</td>
+								</tr>
+								<tr>
+									<td colspan="4"><span class="bold">职能描述：</span>基于异构集群调度系统，构造大规模集群并行运行的口令破解系统，完成常见算法的口令破解。</td>
+								</tr>
+								
+								<tr class="projectInfo" padding-top="10px">
+									<td><span class="point">•</span> 2014.09-2015.07</td>
+									<td><span class="italic">餐饮管理系统</span></td>
+									<td>研发</td>
+									<td>投入商用</td>
+								</tr>
+								<tr>
+									<td colspan="4"><span class="bold">项目简介：</span>基于C#+SQL Server的商业餐饮管理系统，完成餐饮行业的基本业务需求和报表的统计分析。</td>
+								</tr>
+								<tr>
+								<td colspan="4"><span class="bold">职能描述：</span>参与需求分析，负责前台点餐和资金结算功能模块的开发与调试，以及相应的SQL语句。</td>
+								</tr>
+							</table>
+						</div>
+						<div id="achievement">
+							<h4>科研成果</h4>
+							<table>
+								<tr>
+									<td>2013.12</td>
+									<td>软件著作权</td>
+									<td>《虚拟校园》</td>
+									<td> 第二作者</td>
+									<td colspan="2">证书编号：00426980</td>
+								</tr>
+								<tr>
+									<td>2015.04</td>
+									<td>期刊论文</td>
+									<td>《立体化校园交互平台研究与开发》</td>
+									<td> 第一作者</td>
+									<td> CSTPCD</td>
+									<td>电子设计工程</td>
+								</tr>
+							</table>
+						</div>
+		
+						<div id="activity">
+							<h4>社会实践</h4>
+							<table>
+								<tr><td>2010.11</td><td>广州亚运会地铁志愿者，获优秀志愿者称号</td></tr>
+								<tr><td>2011.09-2012.06</td><td>班级班长，配合学校、教师的教学管理工作，负责班级日常事务，并获优秀班干部称号</td></tr>
+								<tr><td>2012.08</td><td>暑期三下乡赴贵州省罗甸县山区支教调研，获省级重点团队</td></tr>
+								<tr><td>2014.09-2015.06</td><td>研分会干事，负责活动策划与具体实施</td></tr>
+								<tr><td>2014.09-2015.12</td><td>三次担任助教工作，负责实验教学和作业批改</td></tr>
+							</table>
+						</div>
+						<div id="honor">
+							<h4>个人荣誉</h4>
+							<table>
+								<tr >
+									<td class="firstCol">2010.09-2014.06</td>
+									<td>连续四年校二等奖学金，三年国家励志奖学金，校学术论文三等奖，校武术文化节团体第三名，校啦啦操比赛团体第二名，校乒乓球比赛团体第三名，优秀班干部，优秀团员称号，优秀毕业生称号</td>
+								</tr>
+								<tr><td class="firstCol">2014.09-2015.10</td><td>硕士新生校二等奖学金，校二等奖学金，校乒乓球新生杯第八名</td></tr>
+							</table>
+						</div>
+						<div id="selfEvaluation">
+							<h4>自我评价</h4>
+							<table>
+								<tr>
+									<td>本人积极向上，热爱乒乓。学习适应能力强，富有责任感，有团队协作沟通能力，做事踏实，做人诚恳。</td>
+								</tr>
+							</table>
+						</div>
+						<div id="download">
+							<h4>resume download</h4>
+							<a href="res/doc/吕吕_CN.docx">吕吕-CN</a>
+							<a href="res/doc/吕吕_EN.docx">吕吕-EN</a>
+						</div>
+					</div>
+				</li>		
+				<!---------------------- resume end------------------------->
+				
+				<!---------------------- album start------------------------->
+				<li id="iLi2">
+					<div id="albumContainer">
+						<img alt="album" src="res/img/album001.png">
+						<ul id="albumList">
+							<li id="family">
+								<img alt="相册" src="res/img/family/family.jpg">
+								<span>family</span>
+							</li>
+							<li id="sister">
+								<img alt="相册" src="res/img/sister/sister.jpg">
+								<span>dear sister</span>
+							</li>
+							<li id="cat">
+								<img alt="相册" src="res/img/cat/cat.jpg">
+								<span>big lazy cat</span>
+							</li>
+							<li id="me">
+								<img alt="相册" src="res/img/me/me000.png">
+								<span>me</span>
+							</li>
+						</ul>
+					</div>
+					<div id="stage">
+						<ul id="photo1container">
+							<li>  
+								<img src="res/img/sister/sister0.jpg"/> <span>sister0</span>  
+							</li>  
+							<li>  
+								<img src="res/img/sister/sister1.jpg"/><span>又是剪刀手</span>  
+							</li>  
+							<li>  
+								<img src="res/img/sister/sister2.jpg"/> <span>sister2</span>  
+							</li>  
+							<li>  
+								<img src="res/img/sister/sister3.jpg"/> <span>姐&姐夫</span>  
+							</li>  
+							<li>  
+								<img src="res/img/sister/sister4.jpg"/> <span>姐&姐夫</span>  
+							</li>  
+							<li>  
+								<img src="res/img/sister/sister5.jpg"/> <span>sister5</span>  
+							</li>  
+							<li>  
+								<img src="res/img/sister/sister6.jpg"/> <span>sister6</span>  
+							</li>  
+							<li>  
+								<img src="res/img/sister/sister7.jpg"/> <span>sister7</span>  
+							</li>  
+							<li>  
+								<img src="res/img/sister/sister8.jpg"/> <span>sister8</span>  
+							</li>  
+						</ul>
+					</div>
+				</li>	
+				<!---------------------- album end--------------------------->
+				
+				<!---------------------- special effect ------------------>
+				<li id="iLi3">
+					<ul class="ca-menu">
+						<li>
+							<a href="src/specialEffect/particleSpray.html" target="_blank">
+                            <span class="ca-icon">A</span>
+                            <div class="ca-content">
+                                <h2 class="ca-main">Particle Spray</h2>
+                                <h3 class="ca-sub">粒子喷射</h3>
+                            </div>
+							</a>
+						</li>
+						<li>
+							<a href="src/specialEffect/rainDrop/rainDrop.html" target="_blank">
+								<span class="ca-icon">O</span>
+								<div class="ca-content">
+									<h2 class="ca-main">Rain Drop</h2>
+									<h3 class="ca-sub">模拟下雨</h3>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="src/specialEffect/videoBlowup/videoBlowup.html" target="_blank">
+								<span class="ca-icon">C</span>
+								<div class="ca-content">
+									<h2 class="ca-main">Video Blow Up</h2>
+									<h3 class="ca-sub">视频爆炸</h3>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="src/specialEffect/html5-canvas-particle-effect/index.html" target="_blank">
+								<span class="ca-icon">F</span>
+								<div class="ca-content">
+									<h2 class="ca-main">3000 Particles</h2>
+									<h3 class="ca-sub">3000粒子</h3>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="src/specialEffect/5kind3DPhotoSwitch/index.html" target="_blank">
+								<span class="ca-icon">I</span>
+								<div class="ca-content">
+									<h2 class="ca-main">3D Photo Switch</h2>
+									<h3 class="ca-sub">3D图片切换</h3>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="src/specialEffect/gravityPhoto/gravityFhoto.html" target="_blank">
+								<span class="ca-icon">I</span>
+								<div class="ca-content">
+									<h2 class="ca-main">Gravity Photos</h2>
+									<h3 class="ca-sub">重力图片</h3>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<!-------------------- end special effect ------------------>
+				
+				<!--------------------- game page -------------------------->
+				<li id="iLi4">
+					<ul class="ca-menu-game">
+						<img src="res/img/enjoyGame1.png"/>
+						<li>
+							<a href="src/games/snake/index.html" target="_blank">
+								<span class="ca-icon">A</span>
+								<div>
+									<h2 class="ca-main">Snake</h2>
+									<h3 class="ca-sub">贪吃蛇</h3>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="src/games/chinesechess/index.html" target="_blank">
+								<span class="ca-icon">I</span>
+								<div>
+									<h2 class="ca-main">Chinese Chess</h2>
+									<h3 class="ca-sub">中国象棋</h3>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="src/games/tankwars/index.html" target="_blank">
+								<span class="ca-icon">C</span>
+								<div>
+									<h2 class="ca-main">Self-defined Tank Wars</h2>
+									<h3 class="ca-sub">自定义的坦克大战</h3>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<!--------------------- end game page ------------------------>
+				
+				<!--------------------- life word page ------------------------>
+				<li id="iLi5">
+					<div class="container">
+						<div class="bb-custom-wrapper">
+							<div id="bb-bookblock" class="bb-bookblock">
+								<div class="bb-item">
+									<div class="bb-custom-firstpage">
+										<h1>首页<span>心中凝语</span>
+											<span style="font-size:15px;">人要付出多大的代价，才能认清活着的意义</span><span style="font-size:10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——于娟</span>
+										</h1>
+									</div>
+									<div class="bb-custom-side">
+										<p>让自己哭痛的人往往才是自己最爱的人。<span style="font-size:10px;"><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;于深圳深大北门 2016.09.17晚(一)</span></p>
+									</div>
+								</div>
+								<div class="bb-item">
+									<div class="bb-custom-side">
+										<p>Life is like a dream, sometimes it is good and somtimes it is bad, but in the end it is over.<span style="font-size:10px;"><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;于深圳深南大道万利达 2016.06.12晚(二)</span></p>
+									</div>
+									<div class="bb-custom-side poem">
+										<p><strong>清明</strong><br/><br/>春风起，杨柳绿<br/>芸薹开 ，燕归来 <br/>久久期盼 <br>你又几时还<br/><br/>又是一年春相似<br/>奈何没有你<br/>幕幕往昔<br/>却只能在梦里回忆<br/>梦里哭泣<br/><br/>一年辰已逝<br/>如今阴阳隔<br/>陌上花静开<br/>而你何时还<span style="font-size:10px;"><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;于寿县瓦埠瓦岗  清明晨(三)</span></p>
+									</div>
+								</div>
+								<div class="bb-item">
+									<div class="bb-custom-side poem">
+										<p><strong>寒冬夜</strong><br/><br/>寒风瑟瑟纷飞雪<br/>没了麦梢 ，白了枝头<br/>辞了春夏，别了秋<br>又是一年与冬逢<br/>看不见时间走了<br/>你却不见了<br/></br>头顶的灯亮了<br/>我仿佛看见<br/>煤油灯下<br/>你还在操劳<br/>一针一线<br/>缝制着我们过年的新裳<br/><br/>好想回到儿时<br/>你不在窄窄的相框<br/>我不知道烦恼悲伤<br/>依偎在你身旁<br/>酣睡在暖暖的梦乡<br/><span style="font-size:10px;"><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;于寿县瓦埠瓦岗  冬晚(四)</span></p>
+									</div>
+									<div class="bb-custom-side">
+										<p>人因希望而活着。<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:10px;">于广州大学城 2015.1.25晚(五)</span></p>
+									</div>
+								</div>
+								<div class="bb-item">
+									<div class="bb-custom-side">
+										<p>生来哭泣，离去安息，人生不过是一场悲欢离合的梦境，只慰自己的心灵。<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:10px;">于家 2015.1.25(六)</p>
+									</div>
+									<div class="bb-custom-side">
+										<p>当一个人落魄的时候，你的任何东西，在别人面前往往都显得微不足道，苍白无力。<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:10px;">于合肥 2014.9.13(七)</p>
+									</div>
+								</div>
+								<div class="bb-item">
+									<div class="bb-custom-side">
+										<p>小时候，以为吃到肉最重要，后来，以为考试拿第一最重要，现在，我知道身边的人才是最重要的。<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:10px;">于合肥 2014.9.1(八)</p>
+									</div>
+									<div class="bb-custom-side">
+										<p>人成熟的越早，说明他经历了比别人更多的苦难。<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:10px;">于合肥 2014.9.1(九)</p>
+									</div>
+								</div>
+							</div>
+							<nav>
+								<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">First</a>
+								<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Previous</a>
+								<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Next</a>
+								<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Last</a>
+							</nav>
+						</div>
+					</div><!-- /container -->
+				</li>
+				<!--------------------- end word page ------------------------>
+				
+			</ul>
+			<div class="clear"></div>
+		</div>
+		
+		<!----------------------   footer start--------------------------------->
+		<div id="footer">
+			<p class="motto">--心之所向，感恩前行--</p>
+			<p class="friendlyLink">
+				友情链接：
+				<a target="_blank" href="http://www.wanghubill.com/">琥兄个人站点</a> &nbsp;|&nbsp; 
+				<a target="_blank" href="http://blog.csdn.net/Scythe666/">琥兄博客</a> &nbsp;|&nbsp; 
+				<a target="_blank" href="http://blog.csdn.net/Gane_Cheng/">士成博客</a> &nbsp;|&nbsp; 
+				<a target="_blank" href="http://dgcrtx.com/tanlucheng/">谭露成站点</a>
+			</p>
+			<p class="contact">
+				联系我：
+				<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1589276509&site=qq&menu=yes" alt="QQ1589276509" title="QQ1589276509"><i class="fa fa-qq"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a id="weixinLogo" alt="WeiXin" alt="微信louislvlv" title="微信louislvlv"><i class="fa fa-weixin"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a target="_blank" href="http://weibo.com/DableLu"  alt="新浪微博DableLv" title="新浪微博DableLv"><i class="fa fa-weibo"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a target="_blank" href="https://github.com/dablelv"  alt="github dableLv" title="github dableLv"><i class="fa fa-github"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a target="_blank" href="http://blog.csdn.net/k346k346"  alt="CSDN博客" title="CSDN博客">csdn blog</a>
+			</p>
+			<p class="share">
+				分享：
+				<span id="sqzone" title="分享到QQ空间" style="cursor:pointer">Qzone</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<i id="sweibo" class="fa fa-weibo" title="分享到新浪微博"></i>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<i id="stencentWeibo" class="fa fa-tencent-weibo" title="分享到腾讯微博"></i>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<i id="srenren" class="fa fa-renren" title="分享到人人网"></i>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span id="sdouban" class="" title="分享到豆瓣网" style="cursor:pointer">douban</span>
+			</p>
+			<p class="copyRight">Copyright © 2016 Dablelv 吕吕 All Rights Reserved</p>
+		</div>
+		<!----------------------   footer end  --------------------------------->
+	</body>
+</html>
+
+<script type="text/javascript">
+
+	/*****************************公共函数*******************************/
+
+	/************************************************
+	*@brief:获取元素的样式，含单位
+	*@param:obj是目标节点对象，attr是要获取的样式名
+	************************************************/
+	function getStyle(obj,attr){
+		//for ie
+		if(obj.currentStyle)
+			return obj.currentStyle[attr];
+		else
+			return getComputedStyle(obj,false)[attr];	
+	}
+	
+	/**************************************************************
+	*@brief:节点元素运动，包括位置，大小，不透明度等样式缓冲的渐变
+	*@param:obj是运动的元素，json是目标样式，fn是回调函数
+	*@ps:对IE的opacity无效
+	**************************************************************/
+	function move(obj,json,fn){
+		clearInterval(obj.timer);
+		obj.timer = setInterval(function(){
+			var iOpened = true;
+			//循环json每一个的key
+			for(key in json){
+				var iCur=0;
+				if(key=='opacity'){
+					var retOpacity=getStyle(obj,key);
+					iCur=parseInt(parseFloat(retOpacity)*100);
+					console.log("opacity:"+iCur);
+				}else{
+					//获取当前的值
+					var styleValue=getStyle(obj,key);
+					iCur=parseInt(styleValue);
+				}
+				//获取运动的速度
+				var iSpeed=(json[key]-iCur)/8;
+				iSpeed=iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+				
+				//执行运动
+				if(key=='opacity'){
+					iSpeed=(json[key]*100-iCur)/10;
+					obj.style.opacity=(iCur+iSpeed)/100;
+					obj.style.filter='alpha(opacity:'+(iCur+iSpeed)+')';//for ie
+					if(json[key]*100!=iCur){
+						iOpened = false;
+					}
+				}else{
+					//当前值+速度
+					obj.style[key] = iCur+iSpeed+'px';
+					//判断每个条件是否到达目标值
+					if(json[key]!=iCur){
+						iOpened = false;
+					}
+				}
+			}
+			//所有条件都到达目标的时候清除定时器
+			if(iOpened){
+				clearInterval(obj.timer);
+				//判断如果有传入函数就执行函数
+				if(fn)fn();
+			}
+		},30);
+	}
+	
+	/********************************************
+	*@berif:弹性移动
+	*@param:obj:对象;attr:属性;target:目标值;func:回调函数
+	********************************************/
+	//弹性移动
+	function bufferMove(obj,attr,target,func){
+		window.clearInterval(obj.timer);
+		var speed=10;  //多偏移的值
+		obj.timer =window.setInterval(function(){
+			var currValue=parseFloat(getStyle(obj,attr));
+			//if(attr=="height")
+				//alert("hiddenBanner height:"+currValue);
+			if(Math.abs(speed)<1&&Math.abs(target-currValue)<1){
+				if(func) func();
+				obj.style[attr]=target+"px";
+				window.clearInterval(obj.timer);
+				return;
+			}
+			//if(attr=="height")
+				//alert("speed:"+speed);
+			speed+=(target-currValue)/5;      //每次移动的距离
+			speed*=0.7;
+			if((attr=="height"||attr=="width")&&currValue+speed<0) //IE中不能给height和width赋负值
+				obj.style[attr]=0;
+			else
+				obj.style[attr]=currValue+speed+"px";
+		},30);
+	}
+	
+	/*************************************************************
+	*@brief:创建遮罩层
+	**************************************************************/
+	function createCover(){
+		var cover=document.createElement('div');
+		cover.className='cover';
+		cover.style.height =  document.body.scrollHeight+"px";//document.body.offsetHeight+'px';           //document.body表示body标签
+		cover.style.width = document.documentElement.offsetWidth+'px';  //document.documentElement表示html标签
+
+		document.body.appendChild(cover);
+		return cover;
+	}
+	
+	//0.一定时间后收起页面顶端图片
+	var hiddenBanner=window.document.getElementById("hiddenBanner");
+	var boxBanner=window.document.getElementById("boxBanner");
+	boxBanner.style.height=0;
+	
+	window.setTimeout(function(){
+		bufferMove(hiddenBanner,"height",0,function(){
+			//alert("spread boxBanner");
+			bufferMove(boxBanner,"height",280);
+		});
+	},2000);
+
+	//1.导航条的特效
+	var navLiList = document.getElementById('nav').getElementsByTagName('li');
+	var navUnderline = document.getElementById("underline");
+	var paddingLeft=parseInt(getStyle(navLiList[0],"paddingLeft"));
+	navUnderline.style.width=navLiList[0].offsetWidth-paddingLeft*2+"px";
+	
+	for(var i=0;i<navLiList.length;++i){
+		navLiList[i].onmouseover = function(){
+			var paddingLeft=parseInt(getStyle(this,'paddingLeft'));
+			navUnderline.style.width=this.offsetWidth-paddingLeft*2+'px';
+			bufferMove(navUnderline,'left',this.offsetLeft+paddingLeft); 
+		};
+		
+		navLiList[i].onmouseout = function(){
+			if(this.className=="active") return;
+			var activeIndex=0;
+			for(var i=0;i<navLiList.length;++i){
+				if(navLiList[i].className=="active"){
+					activeIndex=i;
+					break;
+				} 
+			}
+			navUnderline.style.width=navLiList[activeIndex].offsetWidth-paddingLeft*2+"px";
+			bufferMove(navUnderline,"left",navLiList[activeIndex].offsetLeft+paddingLeft);
+		};
+		navLiList[i].onmousedown=function(){
+			for(var i=0;i<navLiList.length;++i){ 
+				var liA=navLiList[i].getElementsByTagName("a");
+				liA[0].style.color="#FABF0A";
+			}
+			var liA=this.getElementsByTagName("a");
+			liA[0].style.color="red";
+		}
+	}
+	
+	//2.轮播图的特效
+	var Carousel = document.getElementById('Carousel');
+	var calList = Carousel.getElementsByTagName('li');
+	var imgList = Carousel.getElementsByTagName('img');
+	var calTimer = null;
+	var calArr = [];
+	
+	for(var j= 0; j<calList.length; j++){
+		calArr.push({ 
+			left:parseInt(getStyle(calList[j],'left')),
+			top:parseInt(getStyle(calList[j],'top')),
+			width:parseInt(getStyle(calList[j],'width')),
+			height:parseInt(getStyle(calList[j],'height')),
+			zIndex:parseInt(getStyle(calList[j],'zIndex'))
+	    });
+	}
+	 
+	calTimer = window.setInterval(rotate,4000);
+	
+	function rotate(){
+		calArr.unshift(calArr[calArr.length-1]);//在数组前面插入元素
+		calArr.pop();
+		for(var i = 0; i<calList.length;i++){ 
+			calList[i].style.zIndex = calArr[i].zIndex;
+			move(calList[i],{left:calArr[i].left,top:calArr[i].top,width:calArr[i].width,height:calArr[i].height});
+			move(imgList[i],{width:calArr[i].width,height:calArr[i].height});
+		}
+	}
+	  
+	//3.各个页面的切换
+	var oMain = document.getElementById('main');
+	var mainList = document.getElementById('mainList');
+	var allLi = mainList.getElementsByTagName('li');
+	var target=0;
+	for(var i = 0;i<navLiList.length;i++){
+        navLiList[i].index = i;
+		navLiList[i].onclick=function(){
+			iNow = this.index;
+			for(var i=0;i<navLiList.length;++i)  //局部变量i
+				navLiList[i].className="";
+		
+			this.className="active";
+			//根据当前的li高度设置main的高度
+			var iLi = ('iLi'+iNow).toString();
+			var setLi = document.getElementById(iLi);
+			oMain.style.height = setLi.offsetHeight+20+'px';
+			 
+			//移动到目标位置target
+			target=-allLi[0].offsetWidth*this.index;
+			move(mainList,{left:target},function(){
+				//判断如果到达就开始顺序显示相册封面
+				if(target==-allLi[0].offsetWidth*2)
+					loadTimer=setInterval(showAlbumCover,300);
+				else
+					//隐藏相册封面
+					hideAlbumCover();
+			});
+			return false;
+		};
+	}
+	navLiList[0].onclick();
+	  
+	//4.关键字弹窗特效
+	//显示窗体
+	function moveWindow(obj,attr,target,func){
+		window.clearInterval(obj.timer);
+		obj.timer =window.setInterval(function(){
+			var currValue = parseFloat(getStyle(obj,attr));
+			if(Math.abs(target-currValue)<=6){
+				obj.style[attr]=target+"px";
+				if(func)func();
+				return;
+			}
+			var speed=(target-currValue)/5;      //每次移动的距离
+			obj.style[attr]=currValue+speed+"px";
+		},30);
+	}
+	
+	var keyWord = document.getElementById("keyWord");
+	var keyList = keyWord.getElementsByTagName('li');
+	var sWidth = document.body.clientWidth; 
+	for(var i = 0;i<keyList.length;i++){
+		keyList[i].index = i;
+		keyList[i].onclick = function(){
+			//var pageIndex=i;
+			//get div web page
+			var pageID ='web'+this.index;
+			var obj=document.getElementById(pageID);
+		
+			var childP = obj.getElementsByTagName('p');  
+			var closeBtn = obj.getElementsByTagName('input');
+			//隐藏文字与button
+			childP[0].style.display="none";
+			closeBtn[0].style.display="none";
+			//obj.style.zIndex = keyIndex++;
+		
+			//创建一个遮罩层
+			var localCover = createCover();
+			localCover.style["z-index"]=11;
+			//var cover=document.createElement('div');
+			//cover.className='cover';
+			//cover.style.height = document.body.offsetHeight+'px';           //document.body表示body标签
+			//cover.style.width = document.documentElement.offsetWidth+'px';  //document.documentElement表示html标签
+
+			//document.body.appendChild(cover);
+			
+			//弹出窗口
+			obj.style.display="block";
+			obj.style.top="30%";
+			var width=2*document.getElementById("iLi0").offsetWidth/3;
+			var percent=(window.innerWidth-width)/2/window.innerWidth*100;
+			obj.style.left=percent+"%";
+			
+			move(obj,{width:width},function(){
+				//显示高度
+				childP[0].style["display"]="block";
+				var height=childP[0].offsetHeight;
+				childP[0].style["display"]="none";
+				move(obj,{height:height},function(){
+					//显示文字和close button
+					childP[0].style["display"]="block";
+					closeBtn[0].style["display"]="inline";
+				});
+			});
+			
+			//添加关闭按钮事件
+			closeBtn[0].index=this.index;
+			closeBtn[0].onclick=function(){ 
+				var parent = this.parentNode;
+				var allChild = parent.children;
+				for(var i=0;i<allChild.length;i++) 
+					allChild[i].style.display='none'; 
+				//关闭窗口
+				if(this.index%2==0){
+					moveWindow(parent,"height",0,function(){
+						//alert("close window width");
+						moveWindow(parent,"width",0,function(){
+							parent.style.display = 'none';
+							document.body.removeChild(localCover);//移除遮罩层
+						});
+					});
+				}else{
+					moveWindow(parent,"width",0,function(){
+						//alert("close window width");
+						moveWindow(parent,"height",0,function(){
+							parent.style.display = 'none';
+							document.body.removeChild(localCover);//移除遮罩层
+						});
+					});
+				}
+			}
+		}
+	}
+	
+	//5.显示头像说明
+	var photoObj=document.getElementById("photo");
+	photoObj.onmouseover=function (){
+		var desc=document.getElementById("photo-details");
+		bufferMove(desc,"bottom",4);
+	};
+	photoObj.onmouseout = function(){ 
+		var desc=document.getElementById("photo-details");
+		bufferMove(desc,"bottom",258);
+	};
+	
+	//6.相册
+	//6.1相册封面
+	var ulAlbum=document.getElementById("albumList");
+	var liAlbumCover=ulAlbum.getElementsByTagName('li');
+	var loadIndex=0;
+	var loadTimer=null;
+	
+	//@desc:隐藏相册封面
+	function hideAlbumCover(){
+		for(i=0;i<liAlbumCover.length;++i){
+			liAlbumCover[i].style.opacity=0;
+			liAlbumCover[i].style.filter="alpha(opacity:0)";//for ie
+		}
+	}
+	
+	//@desc:顺序显示相册封面
+	function showAlbumCover(){
+		move(liAlbumCover[loadIndex],{opacity:100});
+		loadIndex++;
+		if(loadIndex>=liAlbumCover.length){ 
+			clearInterval(loadTimer);
+			loadIndex=0;	
+		}
+	}
+	
+	//var aLeftValue=new Array();
+	//var aTopValue=new Array();
+	//设置相册封面距离父级框的边距，然后再设置为绝对定位
+	for(var i=0;i<liAlbumCover.length;i++){
+	    liAlbumCover[i].style.left=liAlbumCover[i].offsetLeft + 'px';
+		liAlbumCover[i].style.top=liAlbumCover[i].offsetTop + 'px';
+		//left=getStyle(liAlbumCover[0],"left");//auto
+		//right=getStyle(liAlbumCover[0],"top");//auto
+	}
+	
+	//相册封面沿着中心展开
+	for(var i=0;i<liAlbumCover.length;i++){	//i是全局变量，最后变成4
+		liAlbumCover[i].style.position='absolute';
+		liAlbumCover[i].style.margin=0;
+		
+		widthValue=parseInt(getStyle(liAlbumCover[i],"width"));
+		heightValue=parseInt(getStyle(liAlbumCover[i],"height"));
+		liAlbumCover[i].onmouseover=function(){
+			++this.style.zIndex;
+			move(this,{width:widthValue+60,height:heightValue+38,marginLeft:-30,marginTop:-20});
+			move(this.children[1],{fontSize:24});
+		};
+		
+		liAlbumCover[i].onmouseout=function(){
+			--this.style.zIndex;
+			move(this,{width:widthValue,height:heightValue,marginLeft:0,marginTop:0});
+			move(this.children[1],{fontSize:16});
+		};
+	}
+	
+	//为family图片添加单击事件
+	var liAlbumCoverCat=document.getElementById('family');
+	if(liAlbumCoverCat.addEventListener){
+		liAlbumCoverCat.addEventListener('click',function(){
+			window.open("src/album_family/index.html");
+		},false);
+	}else{
+		liAlbumCoverCat.attachEvent('click',function(){
+			window.open("src/album_family/index.html");
+		},false);
+	}
+	
+	//为sister图片添加单击事件
+	var liAlbumCoverCat=document.getElementById('sister');
+	liAlbumCoverCat.onclick=function(){
+		var cover=createCover();
+		var divStage=document.getElementById("stage");
+		divStage.style["top"]="0px";
+		divStage.style["z-index"]=2;
+		move(cover,{opacity:0.99});
+		var retOpacity=getStyle(cover,"opacity");
+		cover.onclick=function(){
+			document.body.removeChild(this);  //移除遮罩层
+			divStage.style["z-index"]=-1;
+		};
+	};
+	
+	//为cat图片添加单击事件
+	var liAlbumCoverCat=document.getElementById('cat');
+	if(liAlbumCoverCat.addEventListener){
+		liAlbumCoverCat.addEventListener('click',function(){
+			window.open("src/album_cat/index.html");
+		},false);
+	}else{ //for IE8
+		liAlbumCoverCat.attachEvent('click',function(){
+			window.open("src/album_cat/index.html");
+		},false);
+	}
+	
+	//为me图片添加单击事件
+	var liAlbumCoverCat=document.getElementById('me');
+	if(liAlbumCoverCat.addEventListener){
+		liAlbumCoverCat.addEventListener('click',function(){
+			window.open("src/album_me/index.html");
+		},false);
+	}else{
+		liAlbumCoverCat.attachEvent('click',function(){
+			window.open("src/album_me/index.html");
+		},false);
+	}
+	
+	//sister旋转相册
+	var transform=function(element,value,key){  
+        key=key||"transform";
+		
+		//IE not support
+        ["-webkit-", ""].forEach(function(prefix){  
+            element.style[prefix+key] = value;  
+        });
+        return element;  
+    };
+	var container=document.getElementById("photo1container");
+	//立即执行函数
+    (function(){
+        var deg = -40 , i = 1;
+		container.onclick=function(){  
+			transform(this,"rotateY("+(deg*i++)+"deg)");  
+		};
+    })();  
+	function execOnclick(){container.onclick();}
+	window.setInterval(execOnclick,5000);
+	
+	//7.趣味小游戏
+	//null
+</script>
+
+<!--8.生活感言-->
+<script src="js/turnPage/modernizr.custom.js"></script>
+<script src="js/turnPage/jquerypp.custom.js"></script>
+<script src="js/turnPage/jquery.bookblock.js"></script>
+
+<script>
+	var Page=(function(){
+		var config={
+				$bookBlock : $('#bb-bookblock'),
+				$navNext : $('#bb-nav-next'),
+				$navPrev : $('#bb-nav-prev'),
+				$navFirst : $('#bb-nav-first'),
+				$navLast : $('#bb-nav-last')
+			},
+			init=function() {
+				config.$bookBlock.bookblock( {
+					speed : 1000,
+					shadowSides : 0.8,
+					shadowFlip : 0.4
+				} );
+				initEvents();
+			},
+			initEvents=function(){
+				var $slides = config.$bookBlock.children();
+
+				// add navigation events
+				config.$navNext.on( 'click touchstart', function() {
+					config.$bookBlock.bookblock( 'next' );
+					return false;
+				} );
+
+				config.$navPrev.on( 'click touchstart', function() {
+					config.$bookBlock.bookblock( 'prev' );
+					return false;
+				} );
+
+				config.$navFirst.on( 'click touchstart', function() {
+					config.$bookBlock.bookblock( 'first' );
+					return false;
+				} );
+
+				config.$navLast.on( 'click touchstart', function() {
+					config.$bookBlock.bookblock( 'last' );
+					return false;
+				} );
+				
+				// add swipe events
+				$slides.on( {
+					'swipeleft' : function( event ) {
+						config.$bookBlock.bookblock( 'next' );
+						return false;
+					},
+					'swiperight' : function( event ) {
+						config.$bookBlock.bookblock( 'prev' );
+						return false;
+					}
+				} );
+
+				//add keyboard events
+				$(document).keydown( function(e) {
+					var keyCode = e.keyCode || e.which,
+						arrow = {
+							left : 37,
+							up : 38,
+							right : 39,
+							down : 40
+						};
+
+					switch (keyCode) {
+						case arrow.left:
+							config.$bookBlock.bookblock( 'prev' );
+							break;
+						case arrow.right:
+							config.$bookBlock.bookblock( 'next' );
+							break;
+					}
+				} );
+			};
+		return { init : init };
+	})();
+	
+	Page.init();
+</script>
+
+
+<!-- 9.footer -->
+<script>
+
+	//9.1弹出微信二维码
+	var weixinLogo=document.getElementById("weixinLogo");
+	weixinLogo.onclick=function(){
+		//var weixinLogo=document.getElementById("weixinLogo");
+		//var weixinLogoWidth=getStyle(weixinLogo,"width");    //值为auto
+		var cover=createCover();
+		cover.style["z-index"]=11;
+		var img=document.createElement('img');
+		cover.appendChild(img);
+		cover.style.opacity=1;
+		cover.style.filter='alpha(opacity:100)';	//for ie
+		cover.style["background-color"]="rgba(0,0,0,0.8)";
+		img.src="res/img/weixinQRCode.jpg";
+		img.style["width"]="200px";
+		img.style["height"]="200px";
+		img.style["position"]="fixed";
+		
+		var imgWidth=parseInt(getStyle(img,"width"));
+		var imgHeight=parseInt(getStyle(img,"height"));
+		var leftPercent=(window.innerWidth-imgWidth)/2/window.innerWidth*100;
+		var topPercent=(window.innerHeight-imgHeight)/2/window.innerHeight*100;
+		img.style["left"]=leftPercent+"%";
+		img.style["top"]=topPercent+"%";
+		
+		cover.onclick=function(){
+			document.body.removeChild(this);  		//移除遮罩层
+		};
+	};
+	
+	//9.2分享
+	var sqzone=document.getElementById("sqzone");
+	sqzone.onclick=function(){
+		var title="吕吕个人网站：www.lvqingqing.site";
+		var url="www.lvqingqing.site";
+		var pic="res/img/me/cartoonDablelv.jpg";
+		window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?site=www.tuan2.com&title=' + '' + '&desc=' + title + '&summary=' + '' + '&url=' + url+'&pics=' + pic,'_blank');
+	};
+	
+	var sweibo=document.getElementById("sweibo");
+	sweibo.onclick=function(){
+		var title="吕吕个人网站：www.lvqingqing.site";
+		var url="www.lvqingqing.site";
+		var pic="res/img/me/cartoonDablelv.jpg";
+		window.open('http://v.t.sina.com.cn/share/share.php?title=' + title + '&url=' + url + '&pic=' + pic,'_blank');
+	};
+	
+	var stencentWeibo=document.getElementById("stencentWeibo");
+	stencentWeibo.onclick=function(){
+		var title="吕吕个人网站：www.lvqingqing.site";
+		var url="www.lvqingqing.site";
+		var pic="res/img/me/cartoonDablelv.jpg";
+		window.open('http://v.t.qq.com/share/share.php?title=' + title + '&url=' + url + '&pic=' + pic, '_blank');
+	};
+	
+	var srenren=document.getElementById("srenren");
+	srenren.onclick=function(){
+		var title="吕吕个人网站：www.lvqingqing.site";
+		var url="https://www.lvqingqing.site";
+		var pic="res/img/me/cartoonDablelv.jpg";
+		window.open('http://widget.renren.com/dialog/share?resourceUrl=' + url + '&title=' + title + '&description=' + ''+'&pics=' + pic+'&charset=utf-8', '_blank');
+	};
+	
+	var sdouban=document.getElementById("sdouban");
+	sdouban.onclick=function(){
+		var title="吕吕个人网站：www.lvqingqing.site";
+		var url="www.lvqingqing.site";
+		window.open('http://www.douban.com/recommend/?title=' + title + '&url=' + url, '_blank');
+	};
+</script>
+
+<!-- 10.键盘切换各个页面 -->
+<script>
+   var iNow = 0;
+   document.onkeydown = function(ev){ 
+		var oEvent = ev||event;
+		switch(oEvent.keyCode){ 
+			case 37 : iNow -= 1;break;
+			case 39 : iNow += 1;;break;
+			default : break;
+		}
+		if(iNow <= 0)
+		{ 
+			iNow = 0;
+		}
+		if(iNow >= 5 )
+		{ 
+			iNow = 5;
+		}
+		var moveTarget = -allLi[0].offsetWidth * iNow;
+		//根据当前的li高度设置main的高度
+		var iLi = ('iLi'+iNow).toString();
+		var setLi = document.getElementById(iLi);
+		oMain.style.height = setLi.offsetHeight + 'px';
+			   
+			   
+		move(mainList,{left:moveTarget},function(){ 
+			//判断如果到达在‘相册’就开始顺序显示相片
+			if( moveTarget== -allLi[0].offsetWidth * 2){ 
+				loadTimer = setInterval(showPic,200);
+			}		  
+		});
+
+		<!--这是是导航条的背景跟着移动-->
+		for(var i = 0;i<navLiList.length;i++){ 
+			navLiList[i].className = '';
+		}
+			   
+		navLiList[iNow].className = 'active';
+		navUnderline.style.width = navLiList[iNow].offsetWidth+ 'px';
+		
+		navLiList[iNow].onmousedown();
+		navUnderline.style.width=navLiList[iNow].offsetWidth-paddingLeft*2+'px';
+		bufferMove(navUnderline,'left',navLiList[iNow].offsetLeft+paddingLeft,function(){ 
+			navLiList[iNow].className = 'active';
+		});
+};
+   
+</script>
