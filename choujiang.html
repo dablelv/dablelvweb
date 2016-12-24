@@ -1,0 +1,139 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<style type="text/css">
+			*{ margin: 0px;  padding: 0px;}
+			h1{font:300 50px/100% "微软雅黑";text-align:center;margin:80px auto;-webkit-box-reflect:below 10px -webkit-gradient(linear,left top,left bottom,from(transparent),color-stop(0.4,transparent),to(rgba(255,255,255,0.3)));}
+			#resultAll{border:1px solid black;width:800px;margin:0 auto;padding:10px 0;text-align:center;}
+			#resultAll h2{font-weight:normal;font-family:"微软雅黑";}
+			#resultAll .resLabel{width:50px;height:30px;}
+			#choujiang{border:1px solid black;width:800px;margin:0 auto;padding-bottom:20px;text-align:center;}
+			#choujiang p{margin:30px auto;font:bold 100px/100% "微软雅黑";color:red;}
+		</style>
+	</head>
+	<body>
+		<h1>宝民小学三《四》班抽奖</h1>
+		<div id="resultAll">
+			<h2>抽奖结果</h2>
+		</div>
+		<div id="choujiang">
+			<p id="result">*</p>
+			<span>起始数值：</span><input id="startNum" type="text" value="1"/>
+			<span>结束数值：</span><input id="endNum" type="text" value="53"/>
+			<input id="btnChoujiang" type="button" value="抽奖"/>
+		</div>
+	</body>
+</html>
+
+<script type="text/javascript">
+	//节点元素运动，包括位置，大小，不透明度等样式缓冲的渐变
+	//obj是运动的元素  ，  json是目标样式 ， fn是回调函数
+	function move(obj,json,fn){	
+		clearInterval(obj.timer);
+		obj.timer = setInterval(function(){
+			var iOpened = true;
+			
+			//循环json每一个的key
+			for(key in json){
+				var iCur = 0;
+				if(key == 'opacity'){
+					iCur = parseInt( parseFloat( getStyle(obj,key) )*100 );
+				}
+				else{
+					//获取当前的值
+					iCur = parseInt(getStyle(obj,key));
+				}
+				//获取缓冲运动的速度
+				var iSpeed = (json[key] - iCur)/8;
+				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed): Math.floor(iSpeed);
+				//判断每个条件是否到达目标值
+				if(json[key] != iCur){
+					iOpened = false;
+				}
+				//执行运动
+				if(key == 'opacity'){
+					obj.style.opacity = (iCur+iSpeed+10)/100;
+					obj.style.filter = 'alpha(opacity:'+(iCur+iSpeed+10)+')';
+				}
+				else{
+					//当前值+上速度
+					obj.style[key] = iCur+iSpeed+'px';
+				}
+			}
+			//所有条件都到达目标的时候清除定时器
+			if(iOpened){
+				clearInterval(obj.timer);
+				//判断如果有传入函数就执行函数
+				if(fn) fn();
+			}
+		},30);
+	}
+	
+	//获取随机值
+	function getRandomNum(Min,Max){   
+		var Range = Max - Min;   
+		var Rand = Math.random();   
+		return(Min + Math.round(Rand * Range));   
+	}
+	
+	function sleep(millisecond) {
+   	 	var now = new Date();
+   	 	var exitTime = now.getTime() + millisecond;
+   	 	while (true) {
+   	 	    now = new Date();
+   	 	    if (now.getTime() > exitTime)
+   	 	        return;
+   	 	}
+	}
+	
+	//var lala="10"-"1"; //竟然是9
+	var resNumAll=new Array();
+	var btnChoujiang = document.getElementById("btnChoujiang");
+	var resultAll= document.getElementById("resultAll");
+	var res;
+	btnChoujiang.onclick=function(){
+		sleep(200); 	//防止间隔太慢，出现bug
+		var startNum=document.getElementById("startNum").value;
+		var endNum=document.getElementById("endNum").value;
+		if(startNum==""||isNaN(startNum)||parseInt(startNum)<0){
+			alert("何老师，请输入不小于0的起始数字");
+			return;
+		}
+		if(endNum==""||isNaN(endNum)||parseInt(endNum)<0){
+			alert("何老师，请输入不小于0的结束数字");
+			return;
+		}
+		
+		var pResult=document.getElementById("result");
+		
+		if(btnChoujiang.value=="抽奖"){
+			if(resNumAll.length>=(parseInt(endNum)-parseInt(startNum)+1)){
+				alert("已完成制定范围数值的随即抽取,请刷新页面重新开始！");
+				return;
+			}
+			btnChoujiang.value="暂停";
+			pResult.timer = setInterval(function(){
+				res=getRandomNum(parseInt(startNum),parseInt(endNum));
+				pResult.innerHTML=res;
+			},100);
+		}else{
+			btnChoujiang.value="抽奖";
+			while(resNumAll.indexOf(res)!=-1){
+				res+=1;
+				if(res>endNum) res=start;
+				pResult.innerHTML=res;
+			}
+			clearInterval(pResult.timer);
+			if(pResult.innerHTML!=res) alert("显示结果不一致");
+			resNumAll.push(res);
+			//将结果数字添加到总的结果栏
+			var label=document.createElement("input");
+			label.setAttribute("class","resLabel");
+			label.setAttribute("type","button");
+			label.setAttribute("value",res);
+			resultAll.appendChild(label);
+		}
+	};
+</script>
