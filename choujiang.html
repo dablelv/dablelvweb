@@ -8,9 +8,9 @@
 			h1{font:300 50px/100% "微软雅黑";text-align:center;margin:80px auto;-webkit-box-reflect:below 10px -webkit-gradient(linear,left top,left bottom,from(transparent),color-stop(0.4,transparent),to(rgba(255,255,255,0.3)));}
 			#resultAll{border:1px solid black;width:800px;margin:0 auto;padding:10px 0;text-align:center;}
 			#resultAll h2{font-weight:normal;font-family:"微软雅黑";}
-			#resultAll .resLabel{width:50px;height:30px;}
+			.btn{width:60px;height:30px;border-radius: 14px; -webkit-border-radius: 14px; -moz-border-radius: 14px; font:20px/100% "微软雅黑";}
 			#choujiang{border:1px solid black;width:800px;margin:0 auto;padding-bottom:20px;text-align:center;}
-			#choujiang p{margin:30px auto;font:bold 100px/100% "微软雅黑";color:red;}
+			#choujiang p{margin:30px auto;font:100px/100% "微软雅黑";color:red;}
 		</style>
 	</head>
 	<body>
@@ -22,7 +22,7 @@
 			<p id="result">*</p>
 			<span>起始数值：</span><input id="startNum" type="text" value="1"/>
 			<span>结束数值：</span><input id="endNum" type="text" value="53"/>
-			<input id="btnChoujiang" type="button" value="抽奖"/>
+			<button id="btnChoujiang" class="btn">抽奖</button>
 		</div>
 	</body>
 </html>
@@ -93,8 +93,15 @@
 	var btnChoujiang = document.getElementById("btnChoujiang");
 	var resultAll= document.getElementById("resultAll");
 	var res;
+	var lastClickMillis=0;
 	btnChoujiang.onclick=function(){
-		sleep(200); 	//防止间隔太慢，出现bug
+		var now = new Date();
+		if(btnChoujiang.innerHTML=="抽奖"&&now.getTime()<lastClickMillis+1000){ 
+			alert("抽奖间隔不能小于1秒!");
+			return;
+		}
+		else
+			lastClickMillis=now.getTime();
 		var startNum=document.getElementById("startNum").value;
 		var endNum=document.getElementById("endNum").value;
 		if(startNum==""||isNaN(startNum)||parseInt(startNum)<0){
@@ -108,31 +115,29 @@
 		
 		var pResult=document.getElementById("result");
 		
-		if(btnChoujiang.value=="抽奖"){
+		if(btnChoujiang.innerHTML=="抽奖"){
 			if(resNumAll.length>=(parseInt(endNum)-parseInt(startNum)+1)){
 				alert("已完成指定范围数值的随机抽取,请刷新页面重新开始！");
 				return;
 			}
-			btnChoujiang.value="暂停";
+			btnChoujiang.innerHTML="暂停";
 			pResult.timer = setInterval(function(){
 				res=getRandomNum(parseInt(startNum),parseInt(endNum));
 				pResult.innerHTML=res;
 			},100);
 		}else{
-			btnChoujiang.value="抽奖";
+			btnChoujiang.innerHTML="抽奖";
+			clearInterval(pResult.timer);
 			while(resNumAll.indexOf(res)!=-1){
 				res+=1;
 				if(res>endNum) res=start;
-				pResult.innerHTML=res;
 			}
-			clearInterval(pResult.timer);
-			if(pResult.innerHTML!=res) alert("显示结果不一致");
+			pResult.innerHTML=res;
 			resNumAll.push(res);
 			//将结果数字添加到总的结果栏
-			var label=document.createElement("input");
-			label.setAttribute("class","resLabel");
-			label.setAttribute("type","button");
-			label.setAttribute("value",res);
+			var label=document.createElement("button");
+			label.setAttribute("class","btn");
+			label.innerHTML=res;
 			resultAll.appendChild(label);
 		}
 	};
