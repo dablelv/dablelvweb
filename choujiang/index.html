@@ -1,0 +1,227 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<style type="text/css">
+			*{ margin: 0px;  padding: 0px;}
+			html{
+				background:url("img/bg.png") repeat fixed 0 0;
+			}
+			body{
+				position:relative;
+				text-shadow: rgba(255, 255, 255, 0.5) 0 1px 0;
+			}
+			body::before {
+				content: "";
+				position: absolute;
+				width: 140px;
+				height: 300px;
+				top: 200px;
+				left: 0;
+				background: url(img/boy.png) no-repeat;
+			}
+			h1{
+				font:bold 38px/100% "微软雅黑";text-align:center;margin:40px auto;
+				color:hsl(39,100%,30%);
+				-webkit-box-reflect:below 5px -webkit-gradient(linear,left top,left bottom,from(transparent),color-stop(0.4,transparent),to(rgba(255,255,255,0.3)));
+			}
+			h2{color:hsl(39,100%,30%);}
+			#resultAll{border:2px solid rgba(255,255,255,0.6);width:800px;margin:0 auto;padding:10px 0;text-align:center;
+				border-radius: 14px; -webkit-border-radius: 14px; -moz-border-radius: 14px;
+			}
+			#resultAll h2{font-weight:normal;font-family:"微软雅黑";}
+			.btn{
+				display:inline-block;
+				position:relative;
+				margin:5px 5px;
+				border-radius:10px;          /*CSS3标准属性*/
+				-webkit-border-radius:10px;  /*for Google Chrome、Apple Safari*/
+				-moz-border-radius:10px;     /*for Mozilla Firefox*/
+				font:bold 22px/100% "微软雅黑";
+				color: hsl(39, 100%, 30%);
+				background-color: hsl(39, 100%, 50%);
+				padding: 0.5em 0.8em 0.4em 0.8em;
+				
+				box-shadow:rgba(255, 254, 255, 0.6) 0 0.3em 0.3em inset,hsl(39,100%,40%) 0 0.1em 3px,hsl(39,100%,30%) 0 0.3em 1px,rgba(0,0,0, 0.2) 0 0.4em 3px;
+				-webkit-box-shadow:rgba(255, 254, 255, 0.6) 0 0.3em 0.3em inset,hsl(39,100%,40%) 0 0.1em 3px,hsl(39,100%,30%) 0 0.3em 1px,rgba(0,0,0, 0.2) 0 0.4em 3px;
+				-moz-box-shadow:rgba(255, 254, 255, 0.6) 0 0.3em 0.3em inset,hsl(39,100%,40%) 0 0.1em 3px,hsl(39,100%,30%) 0 0.3em 1px,rgba(0,0,0, 0.2) 0 0.4em 3px;
+				
+				background-image:-webkit-gradient(radial, 50% 0, 100, 50% 0, 0, from(rgba(255, 255, 255,0) ),to( rgba(255, 255, 255, 0.5) )),url(img/noise.png);
+				border-bottom: 1px solid rgba(255,255,255,0.3);
+				cursor:pointer;
+				text-shadow:rgba(255,255,255,.5) 0 1px 0;
+				
+				transition:border-radius 0.5s ease-in-out;
+				-webkit-transition: -webkit-border-radius 0.5s ease-in-out;
+				-moz-transition: -moz-border-radius 0.5s ease-in-out;
+			}
+			.btn:hover{
+				background-image:-webkit-gradient(radial,50% 0,100,50% 0,0,from(rgba(255,255,255,0)),to(rgba(255,255,255,0.7))),url(img/noise.png);
+				border-radius:10px 10px 2em 2em/10px 10px 2em 2em;
+			}
+			.btn:active{
+				background-image:-webkit-gradient(radial,50% 0,100,50% 0,0,from(rgba(255,255,255,0)),to(rgba(255,255,255,0.3))),url(img/noise.png);
+				padding: 0.5em 0.8em;
+				box-shadow:rgba(0,0,0,0.6) 0 0.1em 1px,rgba(255, 254, 255, 0.6) 0 0.3em 0.3em inset;
+				border-bottom:none;
+				top:3px;
+			}
+			/*产生高光*/
+			.btn:after {
+				content: "";
+				position: absolute;
+				width: 90%;
+				height: 60%;
+				top:0;
+				left: 5%;
+				background-image:-webkit-gradient(linear,left center,right center,from(rgba(255,255,255,0.5)),color-stop(0.6,rgba(255,255,255,0)),color-stop(0.8,rgba(255,255,255,0)),to(rgba(255,255,255,0.5)));
+				-webkit-border-radius: .5em .5em 1em 1em / .5em .5em 2em 2em;
+			}
+			
+			#choujiang{
+				border:2px solid rgba(255,255,255,0.6);width:800px;margin:0 auto;padding-bottom:20px;text-align:center;
+				border-radius: 14px; -webkit-border-radius: 14px; -moz-border-radius: 14px;
+				margin-top:10px;
+				color:hsl(39,100%,30%);
+			}
+			#choujiang p{margin:30px auto;font:100px/100% "微软雅黑";color:hsl(39, 100%, 40%);}
+		</style>
+	</head>
+	<body>
+		<h1>宝民小学三《四》班抽奖</h1>
+		<div id="resultAll">
+			<h2>抽奖结果</h2>
+		</div>
+		<div id="choujiang">
+			<p id="result">*</p>
+			<span>起始数值：</span><input id="startNum" type="text" value="1"/>
+			<span>结束数值：</span><input id="endNum" type="text" value="53"/>
+			<a id="btnChoujiang" class="btn">抽奖</a>
+			<a id="btnReset" class="btn">重置</a>
+		</div>
+	</body>
+</html>
+
+<script type="text/javascript">
+	//节点元素运动，包括位置，大小，不透明度等样式缓冲的渐变
+	//obj是运动的元素  ，  json是目标样式 ， fn是回调函数
+	function move(obj,json,fn){	
+		clearInterval(obj.timer);
+		obj.timer = setInterval(function(){
+			var iOpened = true;
+			
+			//循环json每一个的key
+			for(key in json){
+				var iCur = 0;
+				if(key == 'opacity'){
+					iCur = parseInt( parseFloat( getStyle(obj,key) )*100 );
+				}
+				else{
+					//获取当前的值
+					iCur = parseInt(getStyle(obj,key));
+				}
+				//获取缓冲运动的速度
+				var iSpeed = (json[key] - iCur)/8;
+				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed): Math.floor(iSpeed);
+				//判断每个条件是否到达目标值
+				if(json[key] != iCur){
+					iOpened = false;
+				}
+				//执行运动
+				if(key == 'opacity'){
+					obj.style.opacity = (iCur+iSpeed+10)/100;
+					obj.style.filter = 'alpha(opacity:'+(iCur+iSpeed+10)+')';
+				}
+				else{
+					//当前值+上速度
+					obj.style[key] = iCur+iSpeed+'px';
+				}
+			}
+			//所有条件都到达目标的时候清除定时器
+			if(iOpened){
+				clearInterval(obj.timer);
+				//判断如果有传入函数就执行函数
+				if(fn) fn();
+			}
+		},30);
+	}
+	
+	//获取随机值
+	function getRandomNum(Min,Max){   
+		var Range = Max - Min;   
+		var Rand = Math.random();   
+		return(Min + Math.round(Rand * Range));   
+	}
+	
+	function sleep(millisecond) {
+   	 	var now = new Date();
+   	 	var exitTime = now.getTime() + millisecond;
+   	 	while (true) {
+   	 	    now = new Date();
+   	 	    if (now.getTime() > exitTime)
+   	 	        return;
+   	 	}
+	}
+	
+	//var lala="10"-"1"; //竟然是9
+	var resNumAll=new Array();
+	var btnChoujiang = document.getElementById("btnChoujiang");
+	var resultAll= document.getElementById("resultAll");
+	var res;
+	var lastClickMillis=0; //距离1970.01.01的毫秒数
+	btnChoujiang.onclick=function(){
+		var now = new Date();
+		if(btnChoujiang.innerHTML=="抽奖"&&now.getTime()<lastClickMillis+1000){
+			alert("抽奖间隔不能小于1秒!");
+			return;
+		}
+		else
+			lastClickMillis=now.getTime();
+		var startNum=document.getElementById("startNum").value;
+		var endNum=document.getElementById("endNum").value;
+		if(startNum==""||isNaN(startNum)||parseInt(startNum)<0){
+			alert("何老师，请输入不小于0的起始数字");
+			return;
+		}
+		if(endNum==""||isNaN(endNum)||parseInt(endNum)<0){
+			alert("何老师，请输入不小于0的结束数字");
+			return;
+		}
+		
+		var pResult=document.getElementById("result");
+		
+		if(btnChoujiang.innerHTML=="抽奖"){
+			if(resNumAll.length>=(parseInt(endNum)-parseInt(startNum)+1)){
+				alert("已完成指定范围数值的随机抽取,请刷新页面重新开始！");
+				return;
+			}
+			btnChoujiang.innerHTML="暂停";
+			pResult.timer = setInterval(function(){
+				res=getRandomNum(parseInt(startNum),parseInt(endNum));
+				pResult.innerHTML=res;
+			},100);
+		}else{
+			btnChoujiang.innerHTML="抽奖";
+			clearInterval(pResult.timer);
+			while(resNumAll.indexOf(res)!=-1){
+				res+=1;
+				if(res>endNum) res=start;
+			}
+			pResult.innerHTML=res;
+			resNumAll.push(res);
+			//将结果数字添加到总的结果栏
+			var label=document.createElement("a");
+			label.setAttribute("class","btn");
+			label.innerHTML=res;
+			resultAll.appendChild(label);
+		}
+	};
+	
+	//重置button事件
+	var btnReset=document.getElementById("btnReset");
+	btnReset.onclick=function(){
+		location.reload();
+	};
+	
+</script>
