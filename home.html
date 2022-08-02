@@ -1122,7 +1122,7 @@
 	var keyWord = document.getElementById("keyWord");
 	var keyList = keyWord.getElementsByTagName('li');
 	var sWidth = document.body.clientWidth; 
-	for(var i = 0;i<keyList.length;i++){
+	for(var i = 0;i<keyList.length;i++) {
 		keyList[i].index = i;
 		keyList[i].onclick = function(){
 			//var pageIndex=i;
@@ -1230,18 +1230,14 @@
 			loadIndex=0;	
 		}
 	}
-	
-	//var aLeftValue=new Array();
-	//var aTopValue=new Array();
-	//设置相册封面距离父级框的边距，然后再设置为绝对定位
+
+	// 设置相册封面距离父级框的边距，然后再设置为绝对定位
 	for(var i=0;i<liAlbumCover.length;i++){
 	    liAlbumCover[i].style.left=liAlbumCover[i].offsetLeft + 'px';
 		liAlbumCover[i].style.top=liAlbumCover[i].offsetTop + 'px';
-		//left=getStyle(liAlbumCover[0],"left");//auto
-		//right=getStyle(liAlbumCover[0],"top");//auto
 	}
 	
-	//相册封面沿着中心展开
+	// 相册封面沿着中心展开
 	for(var i=0;i<liAlbumCover.length;i++){	//i是全局变量，最后变成4
 		liAlbumCover[i].style.position='absolute';
 		liAlbumCover[i].style.margin=0;
